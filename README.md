@@ -42,7 +42,7 @@ to build your model from scratch. Sample model templates for Python are provided
      **Python**
 
      ```
-     python python/run_model.py --input-dir input/ --output-dir .
+     python python/run_model.py --input-dir input/ --output-dir output/
      ```
 
      where:
