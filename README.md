@@ -13,7 +13,7 @@ to build your model from scratch. Sample model templates for Python are provided
 - Python 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Synapse account](https://www.synapse.org/#)
-- Synapse project for the challenge
+- [Synapse LISA 2025 project for the challenge] (https://www.synapse.org/Synapse:syn65670170/wiki/631438)
 
 ---
 
