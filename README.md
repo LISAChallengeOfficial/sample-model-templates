@@ -52,7 +52,7 @@ to build your model from scratch. Sample model templates for Python are provided
 
 ### Update the Dockerfile
 
-- Ensure all dependencies are listed in `requirements.*` so that they are
+- Ensure all dependencies are listed in `requirements.txt` so that they are
   installed during this build process, as network access is disabled when
   your submission is run.
 
