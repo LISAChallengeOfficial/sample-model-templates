@@ -8,15 +8,10 @@ import typer
 from typing_extensions import Annotated
 
 
-def predict(df: pd.DataFrame) -> pd.DataFrame:
+def predict() :
     """Sample prediction function.
 
-    TODO: Replace this with your actual model prediction logic. In this
-    example, random floats are assigned.
-    """
-    pred = df.loc[:, ["id"]]
-    pred["probability"] = np.random.random_sample(size=len(pred.index))
-    return pred
+    pass
 
 
 def main(
@@ -26,12 +21,11 @@ def main(
     """
     Run inference using data in input_dir and output predictions to output_dir.
     """
-    data = pd.read_csv(os.path.join(input_dir, "data.csv"))
-    predictions = predict(data)
-    predictions.to_csv(
-        os.path.join(output_dir, "predictions.csv"),
-        index=False,
-    )
+    input_path = Path(input_dir)
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    pass
 
 
 if __name__ == "__main__":
