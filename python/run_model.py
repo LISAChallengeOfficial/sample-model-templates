@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 import typer
 from typing_extensions import Annotated
-
+from pathlib import Path
 
 def predict() :
     """Sample prediction function.
