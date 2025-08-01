@@ -19,7 +19,7 @@ to build your model from scratch. Sample model templates for Python are provided
 
 ### Write your algorithm(s)
 
-1. Replace the placeholder code in `run_model.*` script with your own
+1. Replace the placeholder code in `run_model.py` script with your own
    algorithm(s). Create additional functions and scripts for modularity
    and organization as needed.
 
