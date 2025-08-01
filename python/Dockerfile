@@ -1,32 +1,27 @@
 # Define the base of your image.
-# We recommend to always specify a tag. `latest` may not 
-# always ensure reproducibility.
-FROM --platform=linux/amd64 python:3.11-slim
+# Specifying `--platform=linux/amd64` ensures compatibility when building on Apple Silicon (M1/M2).
+# Always pin the version (e.g., python:3.10-slim) to ensure reproducibility.
+FROM --platform=linux/amd64 python:3.10-slim
 
-# For best practice, run container as non-root user.
-RUN groupadd -r user && useradd -m --no-log-init -r -g user user
-USER user
+# Install essential build tools such as gcc/g++ that may be needed to compile certain Python packages.
+RUN apt-get update && \
+    apt-get install -y build-essential gcc g++ && \
+    rm -rf /var/lib/apt/lists/*
 
-# Set the working directory for the COPY, RUN, and ENTRYPOINT
-# commands of the Dockerfile.
+# Set the working directory for the COPY, RUN, and ENTRYPOINT commands.
 WORKDIR /home/user
 
-# Copy files over to the image.
-# We recommend copying over each file individually, as to take
-# advantage of cache building (which helps reduce build time).
-COPY --chown=user:user requirements.txt .
+# Copy all files from the build context into the image.
+COPY . .
 
-# Install needed libraries/packages.
-# Your model will be run without network access, so the dependencies
-# must be installed here (and not during code execution).
+# Install Python dependencies listed in requirements.txt.
+# Use --no-cache-dir to reduce image size, and --break-system-packages to allow installation
+# even if it modifies system-managed packages (use cautiously).
 RUN pip install \
-    --user \
     --no-cache-dir \
     --break-system-packages \
     -r requirements.txt
 
-COPY --chown=user:user run_model.py .
-
-# Set the main command of the image.
-# We recommend using this form instead of `ENTRYPOINT command param1`.
+# Set the main command to run your model script when the container starts.
 ENTRYPOINT ["python", "run_model.py"]
+
