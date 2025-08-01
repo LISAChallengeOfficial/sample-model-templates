@@ -6,12 +6,11 @@
 </h3>
 
 You can either build off of this repository template or use it as reference
-to build your model from scratch. Sample model templates for both R and
-Python are provided.
+to build your model from scratch. Sample model templates for Python are provided.
 
 ### Requirements
 
-- Python or R
+- Python 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Synapse account](https://www.synapse.org/#)
 - Synapse project for the challenge
@@ -27,10 +26,9 @@ Python are provided.
 2. Manage the dependencies:
 
    - **Python:** Update `requirements.txt` with any required Python libraries.
-   - **R:** Update `requirements.R` by modifying the `pkg_list` variable to
-     include or exclude necessary R packages.
 
-3. (optional) Locally run `run_model.*` to verify it can run successfully.
+
+3. (optional) Locally run `run_model.py` to verify it can run successfully.
 
    The scripts have been designed to accept input and output directories as
    command-line arguments, allowing you to test with various data locations.
@@ -44,18 +42,12 @@ Python are provided.
      **Python**
 
      ```
-     python python/run_model.py --input-dir sample_data/ --output-dir .
-     ```
-
-     **R**
-
-     ```
-     Rscript r/run_model.R --input-dir sample_data/ --output-dir .
+     python python/run_model.py --input-dir input/ --output-dir .
      ```
 
      where:
 
-     - `sample_data/` is used as the input directory
+     - `input/` is used as the input directory
      - `.` (current working directory) is used as the output directory
 
 ### Update the Dockerfile
@@ -75,8 +67,6 @@ Python are provided.
   * `ubuntu`
   * `python`
   * `bitnami/pytorch`
-  * `r-base`
-  * `rocker/tidyverse`
 
 - If your image is taking some time to build, consider optimizing the order
   of the Dockerfile commands by placing frequently changing parts near the
@@ -86,7 +76,7 @@ Python are provided.
 
 ### Build your model
 
-1. If you haven't already, change directories to `r/` or `python/`. Then run
+1. If you haven't already, change directories to  `python/`. Then run
    the `build` command to Dockerize your model:
 
    ```
