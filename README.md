@@ -48,7 +48,7 @@ to build your model from scratch. Sample model templates for Python are provided
      where:
 
      - `input/` is used as the input directory
-     - `.` (current working directory) is used as the output directory
+     - `output/` is used as the output directory
 
 ### Update the Dockerfile
 
